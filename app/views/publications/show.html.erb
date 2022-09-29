@@ -1,0 +1,27 @@
+<h1><%= @publication.title%></h1>
+
+<img src="<%= @publication.image %>" alt="<%= @publication.title%>">
+
+<p>
+    <strong>Sport: </strong>
+    <%= @publication.sport%>
+</p>
+
+<p>
+    <strong>Description: </strong>
+    <%= @publication.description%>
+</p>
+
+<p>
+    <strong>Category: </strong>
+    <%= @publication.category%>
+</p>
+
+<p>
+    <strong>Price: </strong>
+    <%= @publication.price%>
+</p>
+
+<%= link_to 'Go back', publications_index_path%>
+<p><%= link_to 'Edit', publications_edit_path(:id =>@publication.id) %></p>
+<p><%= link_to 'Delete', publications_delete_path(:id =>@publication.id), method: :delete %></p>
