@@ -1,0 +1,29 @@
+<h1>Publications#index</h1>
+
+<%= notice %>
+
+<table align='center'>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Sport</th>
+            <th>Category</th>
+            <th>Price</th>
+
+        </tr> 
+    </thead>
+    <tbody>
+        <% @publication.each do |publication| %>
+            <tr>
+                <td><%= publication.title%></td>
+                <td><%= publication.sport%></td>
+                <td><%= publication.category%></td>
+                <td><%= publication.price%></td>
+                <td><%= link_to 'View details', publications_show_path(:id => publication.id)%></td>
+            </tr>
+        <% end %>
+    </tbody>
+           
+</table>
+
+<%= link_to 'Upload a new publication', publications_new_path%>
