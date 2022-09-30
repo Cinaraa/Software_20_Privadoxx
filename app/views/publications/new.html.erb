@@ -1,0 +1,33 @@
+<h1>Publications#new</h1>
+
+<%= form_with(model: @publication, method: :post) do |form| %>
+
+    <div>
+        <%= form.label :Title %>
+        <%= form.text_field :title%>
+    </div>
+    <div>
+        <%= form.label :Sport %>
+        <%= form.text_field :sport%>
+    </div>
+    <div>
+        <%= form.label :Image %>
+        <%= form.text_field :image%>
+    </div>
+    <div>
+        <%= form.label :Description %>
+        <%= form.text_field :description%>
+    </div>
+    <div>
+        <%= form.label :Category %>
+        <%= form.text_field :category%>
+    </div>
+    <div>
+        <%= form.label :Price %>
+        <%= form.text_field :price%>
+    </div>
+    <div>
+        <%= form.submit 'Subir Post'%>
+    </div>
+
+<% end %>
