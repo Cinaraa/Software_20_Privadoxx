@@ -1,3 +1,5 @@
 <h1>Homes#index</h1>
+<% if current_user %>
+    <h2>Bienvenido <%= current_user.name %></h2>
+<% end %>
 <p>Hello world</p>
-<p>Find me in app/views/homes/index.html.erb</p>
