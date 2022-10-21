@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controlador de la página de inicio
 class HomesController < ApplicationController
   def index; end
 

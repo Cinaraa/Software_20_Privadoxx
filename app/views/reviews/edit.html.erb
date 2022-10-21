@@ -1,0 +1,17 @@
+<h1>Edit Review#edit</h1>
+
+<%= form_with(model: @review, method: :patch, url: reviews_update_path(@review.id)) do |form| %>
+
+    <div>
+        <%= form.label :rating %>
+        <%= form.text_field :rating%>
+    </div>
+    <div>
+        <%= form.label :content %>
+        <%= form.text_field :content%>
+    </div>
+    <div>
+        <%= form.submit 'Update Review'%>
+    </div>
+
+<% end %>

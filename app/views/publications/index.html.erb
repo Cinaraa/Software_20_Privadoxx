@@ -1,0 +1,33 @@
+<h1>Publications</h1>
+
+<%= notice %>
+
+<table align='center'>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Sport</th>
+            <th>Category</th>
+            <th>Price</th>
+
+        </tr> 
+    </thead>
+    <tbody>
+        <% @publication.each do |publication| %>
+            <tr>
+                <td><%= publication.title%></td>
+                <td><%= publication.sport%></td>
+                <td><%= publication.category%></td>
+                <td><%= publication.price%></td>
+                <td><%= link_to 'View details', publication_path(:id => publication.id)%></td>
+            </tr>
+        <% end %>
+    </tbody>
+           
+</table>
+
+<% if current_user.role == 'moderator' %>
+    <%= link_to 'new post', publications_new_path, :class => "btn"%>
+<% end %>
+
+<%= link_to 'Back', homes_index_path, :class => "btn" %>

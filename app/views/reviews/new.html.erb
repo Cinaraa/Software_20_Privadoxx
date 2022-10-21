@@ -1,0 +1,19 @@
+<h1>Reviews</h1>
+
+<%= form_with(model: [ @publication, @publication.reviews.build ], local: true) do |form| %>
+
+    <div>
+        <%= form.label :rating %>
+        <%= form.text_field :rating%>
+    </div>
+    <div>
+        <%= form.label :content %>
+        <%= form.text_field :content%>
+    </div>
+    <div>
+        <%= form.submit 'Publicar Review'%>
+    </div>
+
+    <%= link_to 'Go back', publications_path(:id =>@publication.id)%>
+
+<% end %>

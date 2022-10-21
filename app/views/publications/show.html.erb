@@ -1,0 +1,44 @@
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-4">
+            <%= image_tag(@publication.image, style:"width: 150px; height: 200px; border-radius: 100%") if @publication.image.attached? %>
+        </div> 
+        <div class="col-8">
+            <h1><%= @publication.title %></h1>
+            <h4><strong>Sport: </strong><%= @publication.sport %></h4> 
+            <h4><strong>Description: </strong><%= @publication.description %></h4> 
+            <h4><strong>Category: </strong><%= @publication.category%></h4> 
+            <h4><strong>Price: </strong><%= @publication.price%></h4> 
+            <h4><strong>Posted by: </strong><%= @publication.user.name%></h4>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-link" type="button">
+                <% if current_user.role == 'moderator' %>
+                    <%= link_to 'Edit', edit_publication_path(:id =>@publication.id), :class => "btn" %> |
+                    <%= link_to 'Delete', publications_delete_path(:id =>@publication.id), method: :delete, :class => "btn" %> |
+                <% end %>
+
+                <% if  @publication.user != current_user %>
+
+                    <%= link_to 'New Request', new_publication_request_path(@publication), :class => "btn" %> |
+                    <%= link_to 'Add Review', new_publication_review_path(@publication), :class => "btn" %> |
+
+                <% end %>
+
+                <%= link_to 'Back', publications_path, :class => "btn" %>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h2>Reviews:</h2>
+            <%= render @publication.reviews %>
+        </div>
+    </div>
+    <p>Find me in app/views/publications/show.html.erb</p>
+</div>
+

@@ -1,0 +1,42 @@
+<h1>Publications#edit</h1>
+
+<%= form_with(model: @publication, method: :patch, url: publications_update_path(:id => @publication.id)) do |form| %>
+
+    <div>
+        <%= form.label :Title %>
+        <%= form.text_field :title%>
+    </div>
+
+    <div>
+        <%= form.label :Sport %>
+        <%= form.text_field :sport%>
+    </div>
+
+    <div>
+        <%= form.label :Image %>
+        <%= form.file_field :image%>
+    </div>
+
+    <div>
+        <%= form.label :Description %>
+        <%= form.text_field :description%>
+    </div>
+
+    <div>
+        <%= form.label :Category %>
+        <%= form.text_field :category%>
+    </div>
+
+    <div>
+        <%= form.label :Price %>
+        <%= form.text_field :price%>
+    </div>
+
+    <div>
+        <%= form.submit 'Actualizar Post'%>
+    </div>
+
+
+<% end %>
+
+<%= link_to 'Back', publication_path(:id => @publication.id), :class => "btn" %>

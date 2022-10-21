@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @request.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @request.body %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @request.start %>
+</p>
+
+<p>
+  <strong>Finish:</strong>
+  <%= @request.finish %>
+</p>
+
+<p>
+  <strong>Publication:</strong>
+  <%= @request.publication_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @request.user_id %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @request.owner %>
+</p>
+
+<p>
+  <strong>Status rented:</strong>
+  <%= @request.status %>
+</p>
+
+
+<% if @request.user == current_user %>
+
+    <p><%= link_to 'Delete', requests_destroy_path(:id =>@request.id), method: :delete , data: { confirm: 'Are you sure?' }%></p>
+
+<% end %>
+
+
+<% if current_user.role == 'moderator' and @request.user != current_user and @request.owner == current_user.id %>
+
+    <p><%= link_to 'Accept request', requests_accept_path(:id =>@request.id), method: :get , data: { confirm: 'Are you sure you want to accept?' }%></p>
+
+    <p><%= link_to 'Reject request', requests_destroy_path(:id =>@request.id), method: :delete , data: { confirm: 'Are you sure you want to reject this request?, REQUEST WILL BE DELETED' }%></p>
+
+<% end %>
+
+
+<%= link_to 'Back', requests_index_path %>

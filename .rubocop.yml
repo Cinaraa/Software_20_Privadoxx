@@ -104,3 +104,10 @@ Lint/ShadowedArgument:
   Enabled: true
 
 ### Añade aquí todos los Cops que quieras:
+Layout/EndOfLine:
+  Enabled: False
+Metrics/BlockLength:
+  CountComments: false
+  Max: 100
+Style/Documentation:
+  Enabled: false

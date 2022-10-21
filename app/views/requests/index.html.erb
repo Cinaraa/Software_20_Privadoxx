@@ -1,0 +1,114 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Start</th>
+      <th>Finish</th>
+      <th>Publication</th>
+      <th>User</th>
+      <th>Owner</th>
+      <th>Status rented</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.title %></td>
+        <td><%= request.body %></td>
+        <td><%= request.start %></td>
+        <td><%= request.finish %></td>
+        <td><%= request.publication_id %></td>
+        <td><%= request.user_id %></td>
+        <td><%= request.owner %></td>
+        <td><%= request.status %></td>
+        <td><%= link_to 'View details', publication_request_path(:id => request.id, :publication_id => request.publication_id) %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Your Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Start</th>
+      <th>Finish</th>
+      <th>Publication</th>
+      <th>User</th>
+      <th>Owner</th>
+      <th>Status rented</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <% if request.user == current_user %>
+
+        <tr>
+          <td><%= request.title %></td>
+          <td><%= request.body %></td>
+          <td><%= request.start %></td>
+          <td><%= request.finish %></td>
+          <td><%= request.publication_id %></td>
+          <td><%= request.user_id %></td>
+          <td><%= request.owner %></td>
+          <td><%= request.status %></td>
+          <td><%= link_to 'View details', publication_request_path(:id => request.id, :publication_id => request.publication_id) %></td>
+        </tr>
+
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Recieved requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Start</th>
+      <th>Finish</th>
+      <th>Publication</th>
+      <th>User</th>
+      <th>Owner</th>
+      <th>Status rented</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <% if request.owner == current_user.id %>
+
+        <tr>
+          <td><%= request.title %></td>
+          <td><%= request.body %></td>
+          <td><%= request.start %></td>
+          <td><%= request.finish %></td>
+          <td><%= request.publication_id %></td>
+          <td><%= request.user_id %></td>
+          <td><%= request.owner %></td>
+          <td><%= request.status %></td>
+          <td><%= link_to 'View details', publication_request_path(:id => request.id, :publication_id => request.publication_id) %></td>
+        </tr>
+        
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', homes_index_path, :class => "btn" %>

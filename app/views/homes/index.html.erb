@@ -1,3 +1,60 @@
-<h1>Homes#index</h1>
-<p>Hello world</p>
-<p>Find me in app/views/homes/index.html.erb</p>
+<div class="container-fluid"> 
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-center">
+            <h1 class="text-center">DCCross </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-center">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>    
+        </div>
+    </div>
+
+    <% if user_signed_in? %>
+
+    <% else %>
+    <div class="row">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-link" type="button">
+                <%= link_to 'Iniciar Sesión', new_user_session_path, :class => "btn" %>
+                <%= link_to 'Registrarse', new_user_registration_path, :class => "btn" %>
+            </button>
+        </div>
+    </div>
+    <% end %>
+
+</div>
+
+<% if current_user %>
+
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-sm-12 d-flex justify-content-center">
+                <h4>Bienvenid@ <%= current_user.name %></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-link" type="button">
+                <% if current_user.role == 'moderator' %>
+                    <%= link_to 'new post', publications_new_path, :class => "btn"%>
+                <% end %>
+                <%= link_to 'view posts', publications_path, :class => "btn" %>
+                <%= link_to 'view requests', requests_index_path, :class => "btn" %>
+            </button>
+        </div>
+    </div>
+    <p>
+    <% if current_user.profilepic %>
+        <img src="<%= current_user.profilepic %>" alt="<%= current_user.name%>">
+    <% end %></p>
+    <p> Tu rol es: <%= current_user.role %> </p>
+
+<% end %>
+
+<p>Find me in app/views/homes/index.htm.erb</p>
+
