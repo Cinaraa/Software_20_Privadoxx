@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user
-  def profile
-    
-  end
+  def profile; end
 
   private
 

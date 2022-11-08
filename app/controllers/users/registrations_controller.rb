@@ -50,19 +50,16 @@ module Users
 
     # If you have extra params to permit, append them to the sanitizer.
     def configure_account_update_params
-    
-#<<<<<<< feat/frontend
- #     devise_parameter_sanitizer.permit(:account_update, keys: [:name, 
-  #                                                              :email, 
-   #                                                             :phone, 
-    #                                                            :password, 
-     #                                                           :password_confirmation, 
+      # <<<<<<< feat/frontend
+      #     devise_parameter_sanitizer.permit(:account_update, keys: [:name,
+      #                                                              :email,
+      #                                                             :phone,
+      #                                                            :password,
+      #                                                           :password_confirmation,
       #                                                          :profilepic])
 
       devise_parameter_sanitizer.permit(:account_update,
                                         keys: %i[name email phone role password password_confirmation profilepic])
-
-
     end
 
     # The path used after sign up.

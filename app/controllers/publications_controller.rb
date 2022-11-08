@@ -11,7 +11,7 @@ class PublicationsController < ApplicationController
   def create
     @publication = Publication.create(publication_params)
     @publication.user = current_user
-    
+
     if @publication.save
       redirect_to publications_path, notice: 'Publication succsessfully created'
     else

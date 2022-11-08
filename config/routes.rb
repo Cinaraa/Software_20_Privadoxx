@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   resources :publications do
     resources :requests
   end
-  
+
   get 'reviews/new'
   post 'reviews', to: 'reviews#create'
   get 'reviews/index'
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
   }
 
   get '/u/:id', to: 'users#profile', as: 'user'
-
 
   get 'publications/new'
   post 'publications', to: 'publications#create'
@@ -42,7 +40,6 @@ Rails.application.routes.draw do
   get 'homes/edit'
   get 'homes/update'
   root to: 'homes#index'
-
 
   resources :publications do
     resources :reviews

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[ show edit update destroy ]
+  before_action :set_request, only: %i[show edit update destroy]
 
   # GET /requests or /requests.json
   def index
@@ -7,8 +9,7 @@ class RequestsController < ApplicationController
   end
 
   # GET /requests/1 or /requests/1.json
-  def show
-  end
+  def show; end
 
   # GET /requests/new
   def new
@@ -17,12 +18,10 @@ class RequestsController < ApplicationController
   end
 
   # GET /requests/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /requests or /requests.json
   def create
-
     @request = Request.new(request_params)
     @publication = Publication.find(params[:publication_id])
     @request.owner = @publication.user_id
@@ -35,12 +34,11 @@ class RequestsController < ApplicationController
     # else
     #   redirect_to publication_path(:id => @publication.id), notice: 'Error creating request'
 
-
     # end
     respond_to do |format|
       if @request.save
         # redirect_to publication_path(:id => @publication.id)
-        format.html { redirect_to publication_url(@publication), notice: "Request was successfully created." }
+        format.html { redirect_to publication_url(@publication), notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @publication }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,7 +51,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to request_url(@request), notice: "Request was successfully updated." }
+        format.html { redirect_to request_url(@request), notice: 'Request was successfully updated.' }
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -76,13 +74,14 @@ class RequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_request
-      @request = Request.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def request_params
-      params.require(:request).permit(:title, :body, :start, :finish, :publication_id, :user_id, :owner, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_request
+    @request = Request.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def request_params
+    params.require(:request).permit(:title, :body, :start, :finish, :publication_id, :user_id, :owner, :status)
+  end
 end

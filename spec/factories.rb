@@ -5,20 +5,20 @@ FactoryBot.define do
   factory :user do
     association :publication
     association :review
-    name { "Francisco" }
-    email { "fpintov@uc.cl" }
-    phone { "444999555" }
-    password { "password" }
-    password_confirmation { "password" }
-    role { "client" }
-  end 
+    name { 'Francisco' }
+    email { 'fpintov@uc.cl' }
+    phone { '444999555' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    role { 'client' }
+  end
 end
 
 FactoryBot.define do
   factory :review do
-    author { "Felipe" }
+    author { 'Felipe' }
     rating { 10 }
-    content { "Gran sprint, un 7" }
+    content { 'Gran sprint, un 7' }
     association :user
     association :publication
   end

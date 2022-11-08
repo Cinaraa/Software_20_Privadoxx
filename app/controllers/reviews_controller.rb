@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   # before_action :find_publication
   def new
@@ -14,17 +16,15 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_to publications_path(:id =>@publication.id)
+      redirect_to publications_path(id: @publication.id)
     else
       render 'new'
     end
   end
 
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
   def edit
     @review = Review.find(params[:id])
@@ -34,22 +34,23 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @publication = @review.publication
     @review.update(review_params)
-    redirect_to publications_path(:id =>@publication.id)
+    redirect_to publications_path(id: @publication.id)
   end
 
   def destroy
     @review = Review.find(params[:id])
     @publication = @review.publication
     @review.destroy
-    redirect_to publications_path(:id =>@publication.id)
+    redirect_to publications_path(id: @publication.id)
   end
 
   private
-    def review_params
-      params.require(:review).permit(:rating, :content, :publication_id)
-    end
 
-    # def find_publication
-      # @publication = Publication.find(params[:publication_id])
-    # end
+  def review_params
+    params.require(:review).permit(:rating, :content, :publication_id)
+  end
+
+  # def find_publication
+  # @publication = Publication.find(params[:publication_id])
+  # end
 end

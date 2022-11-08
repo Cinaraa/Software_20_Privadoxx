@@ -2,7 +2,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-4">
-            <%= image_tag(@publication.image, style:"width: 150px; height: 200px; border-radius: 100%") if @publication.image.attached? %>
+            <%= image_tag(@publication.image, style:"height: 200px") if @publication.image.attached? %>
         </div> 
         <div class="col-8">
             <h1><%= @publication.title %></h1>
